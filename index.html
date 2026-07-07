@@ -3,238 +3,386 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Headshot Day | Richard Glover Photography</title>
+    <title>Session Inquiries | Richard Glover Photography</title>
     <style>
-        /* Replicating rgloverphotos.com typography, weights, and clean editorial whitespace */
+        @font-face {
+            font-family: "ftnk";
+            src: url("https://use.typekit.net/af/9c3000/000000000000000077586b5e/31/l?subset_id=1&fvd=n3&v=3") format("woff2");
+            font-style: normal;
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: "ftnk";
+            src: url("https://use.typekit.net/af/26b618/000000000000000077586b59/31/l?subset_id=1&fvd=n4&v=3") format("woff2");
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: "ftnk";
+            src: url("https://use.typekit.net/af/361f51/000000000000000077586b60/31/l?subset_id=1&fvd=n7&v=3") format("woff2");
+            font-style: normal;
+            font-weight: 700;
+        }
+
         :root {
             --bg-color: #ffffff;
-            --text-main: #333333;
-            --text-muted: #777777;
-            --border-line: #eeeeee;
-            --font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --text-main: #282828;
+            --text-muted: #616161;
+            --border-line: #e7e7e7;
+            --nav-font: "ftnk", "Times New Roman", serif;
+            --body-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --menu-breakpoint: 900px;
         }
 
         body {
             margin: 0;
-            padding: 0;
+            padding: 30px 0 0;
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: var(--font-stack);
+            font-family: var(--body-font);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Top Header Navigation Layout — Puts Logo Strictly in Top Right */
-        header {
-            max-width: 1100px;
+        .site-header {
+            max-width: 1360px;
             margin: 0 auto;
-            padding: 60px 40px 20px 40px;
-            display: flex;
-            justify-content: flex-end; /* Pushes the logo to the far right */
+            padding: 0 57px 10px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            column-gap: 28px;
+            align-items: center;
             box-sizing: border-box;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .top-nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: nowrap;
+            flex: 1 1 auto;
+            min-width: 0;
+            grid-column: 1;
+            grid-row: 1;
+            align-self: center;
+        }
+
+        .top-nav a {
+            font-family: var(--nav-font);
+            font-size: 18px;
+            line-height: 32px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .top-nav a:hover {
+            opacity: 0.65;
         }
 
         .site-logo {
-            font-size: 15px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #111111;
-            text-decoration: none;
-            line-height: 1.4;
-            text-align: right;
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-end;
+            line-height: 0;
+            flex: 0 0 auto;
+            grid-column: 2;
+            grid-row: 1;
+            align-self: center;
         }
 
-        /* Centralized Main Content Column Layout */
+        .site-logo img {
+            display: block;
+            width: 500px;
+            height: auto;
+            max-width: 100%;
+        }
+
         main {
-            max-width: 1100px;
+            max-width: 960px;
             margin: 0 auto;
-            padding: 20px 40px 80px 40px;
+            padding: 64px 57px 90px;
             box-sizing: border-box;
         }
 
-        .meta-tag {
-            font-size: 12px;
+        h1 {
+            font-family: var(--nav-font);
+            font-size: clamp(34px, 5.2vw, 54px);
+            font-weight: 400;
+            letter-spacing: 0.01em;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            font-weight: bold;
+            color: var(--text-main);
+            margin: 0 0 24px;
+            line-height: 1.05;
         }
 
-        h1 {
-            font-size: 26px;
-            font-weight: 300;
-            letter-spacing: 2px;
+        .eyebrow {
+            font-family: var(--nav-font);
+            font-size: 17px;
             text-transform: uppercase;
-            color: #111111;
-            margin: 0 0 35px 0;
-            line-height: 1.4;
+            color: var(--text-muted);
+            margin: 0 0 10px;
         }
 
         .copy-block {
-            max-width: 750px;
-            margin-bottom: 50px;
-        }
-
-        .copy-block p {
-            margin-bottom: 20px;
+            max-width: 760px;
         }
 
         .copy-block p.lead {
-            font-size: 16px;
-            color: #111111;
-        }
-
-        /* 3-Column Image Portfolio Grid matching your galleries */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 50px;
-        }
-
-        .grid-photo {
-            width: 100%;
-            aspect-ratio: 2 / 3;
-            background-color: #fafafa;
-            overflow: hidden;
-        }
-
-        .grid-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* What's Included Feature Specifications Block */
-        .features-panel {
-            border-top: 1px solid var(--border-line);
-            border-bottom: 1px solid var(--border-line);
-            padding: 35px 0;
-            margin-bottom: 50px;
-            max-width: 750px;
-        }
-
-        .features-title {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .features-list {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        .features-list li {
-            margin-bottom: 10px;
+            font-size: 20px;
             color: var(--text-main);
+            margin: 0 0 20px;
         }
 
-        /* Integrated Active Booking Anchor Module */
-        .booking-integration-box {
-            width: 100%;
-            min-height: 800px;
-            margin-top: 20px;
+        .copy-block p {
+            font-size: 17px;
+            margin: 0 0 16px;
+            color: #333333;
         }
 
-        /* Bottom Minimal Branding Footer */
+        .actions {
+            margin-top: 34px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .cta {
+            font-family: var(--nav-font);
+            font-size: 18px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-main);
+            border: 1px solid #cfcfcf;
+            padding: 12px 18px;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .cta:hover {
+            background-color: #f5f5f5;
+            border-color: #bdbdbd;
+        }
+
         footer {
-            margin-top: 80px;
-            padding-top: 30px;
+            margin-top: 58px;
+            padding-top: 26px;
             border-top: 1px solid var(--border-line);
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            gap: 18px;
         }
 
-        footer a {
-            color: #111111;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
+        @media (max-width: 900px) {
+            .site-header {
+                grid-template-columns: 1fr auto;
+                grid-template-rows: auto auto auto;
+                align-items: start;
+                padding: 12px 20px;
+                column-gap: 14px;
+                row-gap: 6px;
+                position: relative;
+            }
+
+            .site-logo {
+                grid-column: 1 / -1;
+                grid-row: 1;
+                justify-content: flex-start;
+            }
+
+            .site-logo img {
+                width: 340px;
+                height: auto;
+            }
+
+            .menu-toggle {
+                grid-column: 2;
+                grid-row: 2;
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                justify-self: end;
+                gap: 5px;
+                width: 34px;
+                height: 34px;
+                padding: 0;
+                border: 0;
+                background: transparent;
+                cursor: pointer;
+            }
+
+            .menu-toggle span {
+                width: 20px;
+                height: 2px;
+                background: #262626;
+                display: block;
+                margin: 0 auto;
+                transition: transform 0.2s ease, opacity 0.2s ease;
+            }
+
+            .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            .top-nav {
+                display: none;
+                grid-column: 1 / -1;
+                grid-row: 3;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+                margin-top: 2px;
+                padding: 12px 0 4px;
+                border-top: 1px solid var(--border-line);
+            }
+
+            .top-nav.is-open {
+                display: flex;
+            }
+
+            .top-nav a {
+                font-size: 22px;
+                line-height: 1.25;
+                padding: 5px 0;
+            }
         }
 
-        /* Standard Tablet / Smartphone Responsive Fold Controls */
         @media (max-width: 768px) {
-            header { padding: 40px 20px 10px 20px; justify-content: flex-start; }
-            .site-logo { text-align: left; }
-            main { padding: 20px 20px 60px 20px; }
-            .photo-grid { grid-template-columns: 1fr; gap: 15px; }
-            footer { flex-direction: column; gap: 15px; align-items: flex-start; }
-            footer a { margin-left: 0; margin-right: 20px; }
+            .site-header {
+                padding: 12px 20px;
+            }
+
+            .site-logo img {
+                width: 280px;
+                height: auto;
+                max-width: 100%;
+            }
+
+            main {
+                padding: 40px 20px 64px;
+            }
+
+            .copy-block p.lead {
+                font-size: 18px;
+            }
+
+            .copy-block p {
+                font-size: 16px;
+            }
+
+            .cta {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+            footer {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header System: Pinned to the top right of the viewport grid -->
-    <header>
+    <header class="site-header">
         <a href="https://rgloverphotos.com" class="site-logo">
-         <img src="./images/logo.svg" alt="Richard Glover Photography Logo" width="300px" height="auto">
+            <img src="./images/logo.svg" alt="Richard Glover Photography Logo">
         </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="top-nav" id="primary-nav" aria-label="Primary">
+            <a href="https://rgloverphotos.com/photo-portfolios">Portfolio</a>
+            <a href="https://rgloverphotos.com/personal-branding">Branding</a>
+            <a href="https://rgloverphotos.com/corporate-headshots">Headshots</a>
+            <a href="https://rgloverphotos.com/about">About</a>
+        </nav>
     </header>
 
     <main>
-        <div class="meta-tag">[Insert Name of Coworking Space Here]</div>
-        <h1>Professional Headshot Session Booking</h1>
+        <p class="eyebrow">Session Inquiries</p>
+        <h1>Looking For A Different Kind Of Shoot?</h1>
 
         <div class="copy-block">
-            <p class="lead">More of your relationships start on a screen than ever before. Make sure your first impression is authentically <i>you</i>.</p>
-            
-            <p>A phone selfie or an AI avatar might be quick, but it can't do the one thing a headshot is supposed to do: help someone feel like they've met the real person before they ever shake your hand.</p>
+            <p class="lead">If you are looking for personal branding, team headshots, or another portrait session, the best next step is through my main portfolio site.</p>
+            <p>That is where you can browse recent work, compare session options, and choose the path that fits what you need right now. Whether you want a full branding library or a consistent look for your team page, I would love to hear what you are building.</p>
+            <p>Use one of the links below and tell me a little about your goals. I will follow up with straightforward next steps.</p>
         </div>
 
-        <!-- Portfolio Gallery Display Row: Root paths navigate out to your shared images directory folder -->
-        <div class="photo-grid">
-            <div class="grid-photo">
-                <img src="./images/CoolGradient.jpg" alt="Cool Gradient Backdrop">
-            </div>
-            <div class="grid-photo">
-                <img src="./images/CommercialWhite.jpg" alt="Commercial White Backdrop">
-            </div>
-            <div class="grid-photo">
-                <img src="./images/CharcoalGray.jpg" alt="Charcoal Gray Backdrop">
-            </div>
-        </div>
-
-        <!-- Package Details Panel -->
-        <div class="features-panel">
-            <div class="features-title">Special Members Package Highlights</div>
-            <ul class="features-list">
-                <li>Your choice of a a Contemporary Cool Gradient, Timeless Commercial White, or Dramatic Charcoal Gray background</li>
-                <li>3 fully retouched, high-resolution digital files</li>
-                <li>Ready for LinkedIn, your website, or your next pitch deck</li>
-                <li>No special hair or makeup team required, just come dressed like you would for your next client meeting.</li>
-                <li>Session fee is 100% creditable toward the cost of a full Personal Branding session, if booked in the next 30 days.</li>
-            </ul>
-        </div>
-
-        <!-- Dynamic Square Scheduler Mounting Node Area -->
-        <div class="booking-integration-box">
-            <div class="meta-tag" style="margin-bottom: 30px;">Select Your Desired Time Slot</div>
-            
-            <!-- START SQUARE EMBED SCRIPT -->
-            <script src="https://book.squareup.com/appointments/95lqi0tm3tdfpc/embed.js?id=LEWQSMFVS1JYY&services=RPFRSJFO52LO6IJDNURAMJGU" defer></script>
-            <!-- END SQUARE EMBED SCRIPT -->
-            
+        <div class="actions" aria-label="Portfolio links">
+            <a class="cta" href="https://rgloverphotos.com/photo-portfolios">Return To Portfolio</a>
+            <a class="cta" href="https://rgloverphotos.com/personal-branding">Personal Branding Sessions</a>
+            <a class="cta" href="https://rgloverphotos.com/corporate-headshots">Corporate Headshots</a>
+            <a class="cta" href="mailto:richard@rgloverphotos.com">Email Richard</a>
         </div>
 
         <footer>
             <div>&copy; 2026 Richard Glover Photography. All Rights Reserved.</div>
-            <div>
-                <a href="https://rgloverphotos.com">Main Portfolio</a>
-                <a href="https://instagram.com/r.a.glover" target="_blank" rel="noopener">@r.a.glover</a>
-            </div>
+            <div>Serving Tempe, Phoenix, Mesa, and the Phoenix Metro Area</div>
         </footer>
     </main>
 
+<script>
+    (function () {
+        var toggle = document.querySelector('.menu-toggle');
+        var nav = document.querySelector('.top-nav');
+        var mobileQuery = window.matchMedia('(max-width: 900px)');
+
+        if (!toggle || !nav) {
+            return;
+        }
+
+        function closeMenu() {
+            nav.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+
+        function syncForViewport() {
+            if (!mobileQuery.matches) {
+                nav.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        toggle.addEventListener('click', function () {
+            var expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            nav.classList.toggle('is-open', !expanded);
+        });
+
+        nav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (mobileQuery.matches) {
+                    closeMenu();
+                }
+            });
+        });
+
+        mobileQuery.addEventListener('change', syncForViewport);
+        syncForViewport();
+    })();
+</script>
 </body>
 </html>
