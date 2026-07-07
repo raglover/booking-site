@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Headshot Day | Richard Glover Photography</title>
+    <style>
+        /* Replicating rgloverphotos.com typography, weights, and clean editorial whitespace */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #333333;
+            --text-muted: #777777;
+            --border-line: #eeeeee;
+            --font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            font-size: 14px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Header Navigation Layout — Puts Logo Strictly in Top Right */
+        header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 40px 20px 40px;
+            display: flex;
+            justify-content: flex-end; /* Pushes the logo to the far right */
+            box-sizing: border-box;
+        }
+
+        .site-logo {
+            font-size: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #111111;
+            text-decoration: none;
+            line-height: 1.4;
+            text-align: right;
+        }
+
+        /* Centralized Main Content Column Layout */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 40px 80px 40px;
+            box-sizing: border-box;
+        }
+
+        .meta-tag {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #111111;
+            margin: 0 0 35px 0;
+            line-height: 1.4;
+        }
+
+        .copy-block {
+            max-width: 750px;
+            margin-bottom: 50px;
+        }
+
+        .copy-block p {
+            margin-bottom: 20px;
+        }
+
+        .copy-block p.lead {
+            font-size: 16px;
+            color: #111111;
+        }
+
+        /* 3-Column Image Portfolio Grid matching your galleries */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .grid-photo {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #fafafa;
+            overflow: hidden;
+        }
+
+        .grid-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* What's Included Feature Specifications Block */
+        .features-panel {
+            border-top: 1px solid var(--border-line);
+            border-bottom: 1px solid var(--border-line);
+            padding: 35px 0;
+            margin-bottom: 50px;
+            max-width: 750px;
+        }
+
+        .features-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .features-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .features-list li {
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        /* Integrated Active Booking Anchor Module */
+        .booking-integration-box {
+            width: 100%;
+            min-height: 800px;
+            margin-top: 20px;
+        }
+
+        /* Bottom Minimal Branding Footer */
+        footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-line);
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer a {
+            color: #111111;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        /* Standard Tablet / Smartphone Responsive Fold Controls */
+        @media (max-width: 768px) {
+            header { padding: 40px 20px 10px 20px; justify-content: flex-start; }
+            .site-logo { text-align: left; }
+            main { padding: 20px 20px 60px 20px; }
+            .photo-grid { grid-template-columns: 1fr; gap: 15px; }
+            footer { flex-direction: column; gap: 15px; align-items: flex-start; }
+            footer a { margin-left: 0; margin-right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header System: Pinned to the top right of the viewport grid -->
+    <header>
+        <a href="https://rgloverphotos.com" class="site-logo">
+            Richard Glover<br>Photography
+        </a>
+    </header>
+
+    <main>
+        <div class="meta-tag">[Insert Name of Coworking Space Here]</div>
+        <h1>Professional Headshot Session Booking</h1>
+
+        <div class="copy-block">
+            <p class="lead">Your avatar is your handshake in the digital age. It's time to replace the phone selfies and the distorted AI slop with a portrait that actually reflects your true professionalism.</p>
+            
+            <p>An AI-generated portrait might resemble a clean digital render, but it completely lacks authenticity. It strips away your genuine character and tells potential clients, recruiters, and colleagues that you prefer a synthetic shortcut over real, human credibility. A true professional headshot captures your individual personality, your competence, and your real warmth under masterful lighting conditions.</p>
+        </div>
+
+        <!-- Portfolio Gallery Display Row: Root paths navigate out to your shared images directory folder -->
+        <div class="photo-grid">
+            <div class="grid-photo">
+                <img src="../images/CoolGradient.jpg" alt="Cool Gradient Backdrop">
+            </div>
+            <div class="grid-photo">
+                <img src="../images/CommercialWhite.jpg" alt="Commercial White Backdrop">
+            </div>
+            <div class="grid-photo">
+                <img src="../images/CharcoalGray.jpg" alt="Charcoal Gray Backdrop">
+            </div>
+        </div>
+
+        <!-- Package Details Panel -->
+        <div class="features-panel">
+            <div class="features-title">Special Members Package Highlights</div>
+            <ul class="features-list">
+                <li>Guided expression coaching for a natural, confident look</li>
+                <li>Professional high-end studio strobe lighting configuration</li>
+                <li>Your choice of a a Contemporary Cool Gradient, Timeless Commercial White, or Dramatic Charcoal Gray background</li>
+                <li>3 fully retouched, high-resolution digital files delivered via a private gallery</li>
+            </ul>
+        </div>
+
+        <!-- Dynamic Square Scheduler Mounting Node Area -->
+        <div class="booking-integration-box">
+            <div class="meta-tag" style="margin-bottom: 30px;">Select Your Desired Time Slot</div>
+            
+            <!-- START SQUARE EMBED SCRIPT -->
+            <script src="https://book.squareup.com/appointments/95lqi0tm3tdfpc/embed.js?id=LEWQSMFVS1JYY&services=RPFRSJFO52LO6IJDNURAMJGU" defer></script>
+            <!-- END SQUARE EMBED SCRIPT -->
+            
+        </div>
+
+        <footer>
+            <div>&copy; 2026 Richard Glover Photography. All Rights Reserved.</div>
+            <div>
+                <a href="https://rgloverphotos.com">Main Portfolio</a>
+                <a href="https://instagram.com/r.a.glover" target="_blank" rel="noopener">@r.a.glover</a>
+            </div>
+        </footer>
+    </main>
+
+</body>
+</html>
