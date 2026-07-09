@@ -6,12 +6,31 @@ require "pathname"
 
 ROOT = File.expand_path("..", __dir__)
 PENDING_ROOT = File.join(ROOT, "pending")
+COMPLETED_ROOT = File.join(ROOT, "completed")
 IMAGES_ROOT = File.join(ROOT, "images")
+RESERVED_ROOT_DIRS = %w[pending completed images scripts .git].freeze
 
 
 def usage
-  puts "Usage: ruby scripts/promote_pending_page.rb <pending-subfolder>"
-  puts "Example: ruby scripts/promote_pending_page.rb cohoots-phoenix"
+  puts "Usage: ruby scripts/promote_pending_page.rb <promote|demote> <slug>"
+  puts "       ruby scripts/promote_pending_page.rb <slug>"
+  puts ""
+  puts "Examples:"
+  puts "  ruby scripts/promote_pending_page.rb promote cohoots-phoenix"
+  puts "  ruby scripts/promote_pending_page.rb demote cohoots-mesa"
+  puts "  ruby scripts/promote_pending_page.rb cohoots-phoenix   # defaults to promote"
+end
+
+
+def validate_slug!(slug)
+  abort "Slug cannot be empty." if slug.nil? || slug.strip.empty?
+
+  cleaned = slug.strip
+  if cleaned.include?("/") || cleaned.include?("\\") || cleaned.include?("..")
+    abort "Invalid slug. Use just the folder name, for example: cohoots-phoenix"
+  end
+
+  cleaned
 end
 
 
@@ -58,23 +77,56 @@ def update_html_image_paths(target_dir)
 end
 
 
-slug = ARGV[0]
-if slug.nil? || slug.strip.empty?
+if ARGV.empty?
   usage
   exit 1
 end
 
-slug = slug.strip
-source_dir = File.join(PENDING_ROOT, slug)
-destination_dir = File.join(ROOT, slug)
-
-unless Dir.exist?(source_dir)
-  abort "Pending folder not found: #{source_dir}"
+if ARGV.length == 1
+  command = "promote"
+  slug = ARGV[0]
+else
+  command = ARGV[0].to_s.downcase
+  slug = ARGV[1]
 end
 
-if Dir.exist?(destination_dir)
-  abort "Destination already exists: #{destination_dir}"
+unless %w[promote demote].include?(command)
+  usage
+  abort "Unknown command: #{command}"
 end
+
+slug = validate_slug!(slug)
+
+if command == "promote"
+  source_dir = File.join(PENDING_ROOT, slug)
+  destination_dir = File.join(ROOT, slug)
+
+  unless Dir.exist?(source_dir)
+    abort "Pending folder not found: #{source_dir}"
+  end
+
+  if Dir.exist?(destination_dir)
+    abort "Destination already exists: #{destination_dir}"
+  end
+else
+  if RESERVED_ROOT_DIRS.include?(slug)
+    abort "Refusing to demote reserved root folder: #{slug}"
+  end
+
+  source_dir = File.join(ROOT, slug)
+  destination_dir = File.join(COMPLETED_ROOT, slug)
+
+  unless Dir.exist?(source_dir)
+    abort "Root folder not found: #{source_dir}"
+  end
+
+  if Dir.exist?(destination_dir)
+    abort "Destination already exists: #{destination_dir}"
+  end
+
+  FileUtils.mkdir_p(COMPLETED_ROOT)
+end
+
 
 unless Dir.exist?(IMAGES_ROOT)
   abort "Images folder not found: #{IMAGES_ROOT}"
